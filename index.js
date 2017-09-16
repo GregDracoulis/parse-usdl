@@ -1,6 +1,22 @@
 export default function parse(str, skipErrors=false) {
   const props = {}
-  const lines = str.substring(str.indexOf('ANSI')).trim().split('\n')
+
+  // First split by \r (carriage return)
+  let sections = str.trim().split('\r')
+
+  let standardSection = null
+  // We want the section that contains 'ANSI'
+  for (let section of sections) {
+    if (section.indexOf('ANSI') > -1) {
+      standardSection = section
+    }
+  }
+
+  if (!standardSection) {
+    throw new Error('no standard section found');
+  }
+
+  const lines = standardSection.substring(standardSection.indexOf('ANSI')).trim().split('\n')
 
   // Remove the first ANSI line
   lines.shift();
