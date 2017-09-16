@@ -49,6 +49,17 @@ export default function parse(str, skipErrors=false) {
     props[key] = value
   }
 
+  if (('givenName' in props) && !('firstName' in props)) {
+    let splitGivenName = props['givenName'].split(',')
+
+    props['firstName'] = splitGivenName.shift()
+
+    // If there are remaining compnents, they all collectively make up the middle name
+    if (splitGivenName && splitGivenName.length) {
+      props['middleName'] = splitGivenName.join(',')
+    }
+  }
+
   return props
 }
 
