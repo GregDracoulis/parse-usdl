@@ -7,7 +7,7 @@ export default function parse(str, skipErrors=false) {
 
   for (let line of lines) {
     let code = line.slice(0, 3)
-    let value = line.slice(3)
+    let value = line.slice(3).trim()
     let key = CODE_TO_KEY[code]
     if (!key) {
       if (!skipErrors) {
