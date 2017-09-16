@@ -1,7 +1,7 @@
 export default function parse(str, skipErrors=false) {
   const props = {}
   const lines = str.substring(str.indexOf('ANSI')).trim().split('\n')
-  for (let i = 0; i < lines.length - 1; i++) {
+  for (let line of lines) {
     let code = line.slice(0, 3)
     let value = line.slice(3)
     let key = CODE_TO_KEY[code]
