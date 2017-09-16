@@ -1,4 +1,4 @@
-exports.parse = function parseCode128 (str) {
+export default function parse(str) {
   const props = {}
   const lines = str.trim().split('\n')
   let started
