@@ -43,6 +43,7 @@ const CODE_TO_KEY = {
   DCD: 'jurisdictionEndorsementCodes',
   DBA: 'dateOfExpiry',
   DCS: 'lastName',
+  DCT: 'givenName',
   DAC: 'firstName',
   DAD: 'middleName',
   DBD: 'dateOfIssue',
