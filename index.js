@@ -1,4 +1,4 @@
-export default function parse(str) {
+export default function parse(str, skipErrors=false) {
   const props = {}
   const lines = str.trim().split('\n')
   let started
@@ -15,7 +15,13 @@ export default function parse(str) {
     let code = line.slice(0, 3)
     let value = line.slice(3)
     let key = CODE_TO_KEY[code]
-    if (!key) throw new Error('unknown code: ' + code)
+    if (!key) {
+      if (!skipErrors) {
+        throw new Error('unknown code: ' + code);
+      }
+
+      continue;
+    }
 
     if (code === 'DBC') {
       if (value === '1') {
