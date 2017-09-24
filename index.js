@@ -60,6 +60,14 @@ export default function parse(str, skipErrors=false) {
     }
   }
 
+  if (('fullName' in props) && !('firstName' in props)) {
+    let splitFullName = props['fullName'].split(' ')
+
+    props['firstName'] = splitFullName.shift()
+    props['lastName'] = splitFullName.pop()
+    props['middleName'] = splitFullName.join(',')
+  }
+
   return props
 }
 
@@ -71,6 +79,7 @@ const CODE_TO_KEY = {
   DBA: 'dateOfExpiry',
   DCS: 'lastName',
   DCT: 'givenName',
+  DAA: 'fullName',
   DAC: 'firstName',
   DAD: 'middleName',
   DBD: 'dateOfIssue',
