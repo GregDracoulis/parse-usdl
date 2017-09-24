@@ -1,6 +1,6 @@
 {
   "name": "parse-usdl",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.js",
   "description": "parse Pdf417 barcode data from US driver licenses",
   "repository": {
